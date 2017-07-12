@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 
 namespace LightningFastWordFinder
 {
@@ -6,7 +6,14 @@ namespace LightningFastWordFinder
     {
         public string GetLongestWord(string text)
         {
-            return "longestWord";
+            char[] delimiterChars = { ' ', '/', '.', '\r', '-' };
+
+            string[] words = text.Split(delimiterChars);
+
+            var sorted = words.OrderBy(n => n.Length);
+            string longest = sorted.LastOrDefault();
+
+            return longest;
         }
     }
 }
